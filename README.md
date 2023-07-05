@@ -4,11 +4,13 @@ Actuarial intervention study for SPI analysis
 The intervention study was designed to estimate the financial and utilization impact of Accolade's clinical and non-clinical interventions. Through a matched cohort design, members with an Accolade intervention are matched with similar members without an intervention. The difference in costs and utilization patterns after the intervention period for each of these groups is attributed to the impact of the intervention.
 
 #Limitations
+
 Perfect matches are impossible for all members. The study matches on multiple criteria and sometimes a close match in one category outweighs a distant match in another. For that reason, sufficient sample sizes are required for the results to be statistically credible.
 
 This study is subject to selection bias. Members who choose to work with Accolade may be more motivated and more capable of making better health decisions than members who do not choose to work with Accolade. It can be argued that Accolade provides the expert information and support for members who are so motivated - that this is the value of Accolade and it cannot be completely disassociated with the selection bias.
 
 #Process
+
 This study uses a series of Python scripts to create the matched cohort data, and an Excel spreadsheet to compare the cohorts. The first Python script ("intervention_data_v30.py") pulls interventions by member and month period from EDW. It uses logic originally written by Andrew Ridella modified to pull only interventions of interest for SPI purposes. It pulls for all members and all customers and stores the results in a text file ("intervention_data_v30.csv"). This Python script simply runs a SQL query, and this step could easily bypass Python to run in SQL.
 
 The next script in the series is "interventions_v30.py" which combines the data created above with claims information from CedarGate and other data from EDW. This script can be modified for different time periods (modifying the 'year' variable) and customers (modifying the client_list variable). As this script was modified and developed over 30 versions, it is messy and has not been optimized for performance. The script works as follows:
